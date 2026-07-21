@@ -50,15 +50,6 @@ const skills: TextCard[] = [
   ["Tooling", "Small utilities, automation-minded workflows, desktop-adjacent experiments."],
 ];
 
-const signals: TextCard[] = [
-  ["Hands-on", "I learn fastest by building, running, breaking, inspecting, and tightening the thing in front of me."],
-  ["Not template-first", "I care when something looks too generic. The visual direction has to feel owned, not generated."],
-  ["Systems-aware", "Frontend matters, but so do data shapes, backend naming, logs, runtime behavior, and deployment details."],
-  ["Iterative", "I make a working version, look at what feels wrong, and keep correcting until it matches the intent."],
-  ["Game-adjacent curiosity", "I have spent time around game logs, cosmetic/loadout data, and tooling problems that require patient inspection."],
-  ["Practical taste", "Dark UI, visible structure, grid patterns, sharp contrast, and interface decisions that do a job."],
-];
-
 const fadeUp = {
   hidden: { opacity: 0, y: 34 },
   show: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
@@ -98,12 +89,11 @@ function App() {
       <main id="main">
         <motion.section className="hero" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} aria-labelledby="hero-title">
           <div className="hero-copy">
-            <motion.p className="eyebrow" variants={fadeUp}>Builder / Frontend Developer</motion.p>
             <motion.h1 id="hero-title" variants={fadeUp}>I build things that have a purpose.</motion.h1>
             <motion.p className="hero-lead" variants={fadeUp}>Code. Fail. Learn. Repeat.</motion.p>
             <motion.div className="hero-actions" variants={fadeUp}>
               <a className="btn primary" href="https://github.com/muddpunch" target="_blank" rel="noopener noreferrer">Github</a>
-              <a className="btn ghost" href="#profile">Projects</a>
+              <a className="btn ghost" href="#work">Projects</a>
             </motion.div>
           </div>
         </motion.section>
@@ -122,13 +112,12 @@ function App() {
             <h2 id="work-title">My favourite projects!</h2>
           </motion.div>
           <motion.div className="project-grid" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
-            {projects.map((project, index) => <ProjectCard project={project} index={index} key={project.title} />)}
+            {projects.map((project) => <ProjectCard project={project} key={project.title} />)}
           </motion.div>
         </section>
 
         <motion.section id="about" className="section split" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} aria-labelledby="about-title">
           <motion.div variants={fadeUp}>
-            <p className="eyebrow">About</p>
             <h1 id="about-title">I like simple systems that survive real usage.</h1>
           </motion.div>
           <motion.div className="about-copy" variants={fadeUp}>
@@ -141,20 +130,6 @@ function App() {
           </motion.div>
         </motion.section>
 
-        <section id="profile" className="section profile-section" aria-labelledby="profile-title">
-          <motion.div className="section-head" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
-            <h2 id="profile-title">What the projects say about me.</h2>
-          </motion.div>
-          <motion.div className="signal-grid" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
-            {signals.map(([title, desc], index) => (
-              <motion.article className="signal-card" variants={fadeUp} key={title}>
-                <span className="signal-number">S{index + 1}</span>
-                <h3>{title}</h3>
-                <p>{desc}</p>
-              </motion.article>
-            ))}
-          </motion.div>
-        </section>
       </main>
 
       <footer className="footer">
@@ -197,10 +172,9 @@ function CursorLight() {
     </motion.div>
   );
 }
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.article className={`project ${project.tone}`} variants={fadeUp} whileHover={{ y: -6 }} transition={{ duration: 0.2 }}>
-      <span className="project-meta">0{index + 1}</span>
       <h3>{project.title}</h3>
       <p>{project.desc}</p>
       <div className="tags">
