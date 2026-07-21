@@ -164,13 +164,6 @@ main { overflow: hidden; }
 
 .hero-copy { max-width: 70rem; }
 
-.eyebrow {
-  margin: 0 0 1rem;
-  color: var(--oxide);
-  font: 800 .78rem ui-monospace, SFMono-Regular, Menlo, monospace;
-  text-transform: uppercase;
-}
-
 h1, h2 {
   margin: 0;
   font-family: Georgia, Cambria, Times New Roman, serif;
@@ -228,7 +221,7 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
 
 .stats article:last-child { border-right: 0; }
 .stats strong { font-family: Georgia, Cambria, Times New Roman, serif; font-size: clamp(2.7rem, 5vw, 4.8rem); line-height: 1; }
-.stats span, .project p, .skill p, .about-copy > p, .signal-card p { color: var(--muted); line-height: 1.65; }
+.stats span, .project p, .skill p, .about-copy > p { color: var(--muted); line-height: 1.65; }
 
 .section { padding: clamp(4rem, 8vw, 8rem) clamp(1rem, 4vw, 4.5rem); }
 
@@ -241,8 +234,10 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
 
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
+  width: min(100%, 74rem);
+  margin-inline: auto;
 }
 
 .project {
@@ -255,11 +250,6 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
 }
 
 .project:hover { border-color: rgb(240 191 67 / 44%); }
-
-.project-meta {
-  color: var(--oxide);
-  font: 800 .82rem ui-monospace, SFMono-Regular, Menlo, monospace;
-}
 
 .project h3, .skill h3 { margin: .5rem 0 0; font-size: 1.18rem; }
 .project p { margin: .75rem 0 1rem; }
@@ -283,7 +273,6 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
   display: grid;
   grid-template-columns: .9fr 1.1fr;
   gap: clamp(2rem, 5vw, 5rem);
-  border-top: 1px solid var(--line);
 }
 
 .about-copy { display: grid; gap: 1.5rem; }
@@ -295,7 +284,7 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
   gap: 1rem;
 }
 
-.skill, .signal-card {
+.skill {
   border: 1px solid var(--line);
   background: rgb(241 236 223 / 4%);
 }
@@ -303,27 +292,6 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
 .skill { padding: 1rem; }
 .skill h3 { margin-top: 0; }
 .skill p { margin: .55rem 0 0; }
-
-.profile-section { border-top: 1px solid var(--line); }
-
-.signal-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.signal-card {
-  min-height: 15rem;
-  padding: 1rem;
-  background:
-    linear-gradient(90deg, rgb(241 236 223 / 5%) 1px, transparent 1px) 0 0 / 20px 20px,
-    linear-gradient(rgb(241 236 223 / 4%) 1px, transparent 1px) 0 0 / 20px 20px,
-    rgb(241 236 223 / 3%);
-}
-
-.signal-number { color: var(--signal); font: 800 .78rem ui-monospace, SFMono-Regular, Menlo, monospace; }
-.signal-card h3 { margin: 2.6rem 0 .7rem; font-size: 1.2rem; }
-.signal-card p { margin: 0; }
 
 .footer {
   display: flex;
@@ -339,7 +307,7 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
 :focus-visible { outline: 3px solid var(--signal); outline-offset: 3px; }
 
 @media (max-width: 860px) {
-  .hero, .split, .project-grid, .signal-grid, .skills { grid-template-columns: 1fr; }
+  .hero, .split, .project-grid, .skills { grid-template-columns: 1fr; }
   .hero { min-height: auto; }
   .stats { grid-template-columns: 1fr; }
   .stats article { border-right: 0; border-bottom: 1px solid var(--line); }
