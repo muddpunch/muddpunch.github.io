@@ -30,9 +30,9 @@ const tech = [
 
 const projects: Project[] = [
   {
-    title: "17.30 Backend",
-    desc: "Backend with good matchmaker, arena support and a lot of other things.",
-    tags: ["Backend", "Fortnite", "Golang"],
+    title: "Chat control encrypter/decrypter",
+    desc: "Made because of European Union, big sis is always watching.",
+    tags: ["Tool", "Freedom", "Python"],
     tone: "oxide",
   },
   {
@@ -40,12 +40,6 @@ const projects: Project[] = [
     desc: "Just a normal injector for modifying Half Sword game. Used for fun!",
     tags: ["Injector", "Half Sword", "C#"],
     tone: "signal",
-  },
-  {
-    title: "Vista Sim Racing Team Website",
-    desc: "A mix of black and white, with a focus on the branding.",
-    tags: ["CSS", "TypeScript", "Node.js"],
-    tone: "green",
   },
 ];
 
