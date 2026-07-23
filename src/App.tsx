@@ -7,15 +7,17 @@ import jsIcon from "../assets/tech/javascript.png";
 import goIcon from "../assets/tech/golang.png";
 import csharpIcon from "../assets/tech/csharp.png";
 import pythonIcon from "../assets/tech/python.png";
+import chatcontrolPreview from "../assets/projects/chatcontrol-preview.svg";
+import halfSwordPreview from "../assets/projects/half-sword-preview.svg";
 
 type Project = {
   title: string;
   desc: string;
   tags: string[];
   tone: "oxide" | "signal" | "green";
+  href: string;
+  preview: string;
 };
-
-type TextCard = [string, string];
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -34,20 +36,17 @@ const projects: Project[] = [
     desc: "Made because of European Union, big sis is always watching.",
     tags: ["Tool", "Freedom", "Python"],
     tone: "oxide",
+    href: "https://github.com/muddpunch/chatcontrol-encrypter-decrypter",
+    preview: chatcontrolPreview,
   },
   {
     title: "HalfSword Enhancer",
     desc: "Just a normal injector for modifying Half Sword game. Used for fun!",
     tags: ["Injector", "Half Sword", "C#"],
     tone: "signal",
+    href: "https://github.com/muddpunch/Half-Sword-Enhancer",
+    preview: halfSwordPreview,
   },
-];
-
-const skills: TextCard[] = [
-  ["Frontend", "Semantic HTML, modern CSS, JavaScript, React-style UI thinking, responsive layouts."],
-  ["Backend flow", "APIs, project structure, naming, practical refactors, service-level thinking."],
-  ["Debugging", "Reading logs, tracing weird states, mapping broken data, testing assumptions quickly."],
-  ["Tooling", "Small utilities, automation-minded workflows, desktop-adjacent experiments."],
 ];
 
 const fadeUp = {
@@ -101,21 +100,28 @@ function App() {
 
         <section id="work" className="section" aria-labelledby="work-title">
           <motion.div className="section-head" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
-            <h2 id="work-title">My favourite projects!</h2>
+            <a className="projects-heading" href="https://github.com/muddpunch" target="_blank" rel="noopener noreferrer">
+              <h2 id="work-title">My favourite projects!</h2>
+              <span>View all on GitHub ↗</span>
+            </a>
           </motion.div>
           <motion.div className="project-grid" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
-            {projects.map((project) => <ProjectCard project={project} key={project.title} />)}
+            {projects.map((project, index) => <ProjectCard project={project} index={index} key={project.title} />)}
           </motion.div>
         </section>
 
-        <motion.section id="about" className="section split" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} aria-labelledby="about-title">
+        <motion.section id="preview" className="section split preview-section" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} aria-labelledby="preview-title">
           <motion.div variants={fadeUp}>
-            <h1 id="about-title">I like simple systems that survive real usage.</h1>
+            <h1 id="preview-title">Projects Preview</h1>
+            <p className="preview-lead">A closer look at the tools, interfaces, and experiments behind the code.</p>
           </motion.div>
-          <motion.div variants={fadeUp}>
-            <div className="skills">
-              {skills.map(([title, desc]) => <InfoCard title={title} desc={desc} className="skill" key={title} />)}
-            </div>
+          <motion.div className="preview-grid" variants={stagger}>
+            {projects.map((project, index) => (
+              <motion.a className="preview-card" href={project.href} target="_blank" rel="noopener noreferrer" variants={fadeUp} key={project.title}>
+                <img src={project.preview} alt={`${project.title} project preview`} loading="lazy" />
+                <span className="preview-caption"><b>0{index + 1}</b>{project.title}<i>↗</i></span>
+              </motion.a>
+            ))}
           </motion.div>
         </motion.section>
 
@@ -169,24 +175,21 @@ function CursorLight() {
     </motion.div>
   );
 }
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <motion.article className={`project ${project.tone}`} variants={fadeUp} whileHover={{ y: -6 }} transition={{ duration: 0.2 }}>
-      <h3>{project.title}</h3>
-      <p>{project.desc}</p>
+    <motion.a className={`project ${project.tone}`} href={project.href} target="_blank" rel="noopener noreferrer" variants={fadeUp} whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
+      <div className="project-meta">
+        <span>0{index + 1}</span>
+        <span>Open repository ↗</span>
+      </div>
+      <div className="project-copy">
+        <h3>{project.title}</h3>
+        <p>{project.desc}</p>
+      </div>
       <div className="tags">
         {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
       </div>
-    </motion.article>
-  );
-}
-
-function InfoCard({ title, desc, className }: { title: string; desc: string; className: string }) {
-  return (
-    <motion.article className={className} variants={fadeUp}>
-      <h3>{title}</h3>
-      <p>{desc}</p>
-    </motion.article>
+    </motion.a>
   );
 }
 
