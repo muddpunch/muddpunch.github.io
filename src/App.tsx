@@ -13,7 +13,6 @@ import halfSwordPreview from "../assets/projects/half-sword-preview.png";
 type Project = {
   title: string;
   desc: string;
-  tags: string[];
   tone: "oxide" | "signal" | "green";
   href: string;
   preview: string;
@@ -34,7 +33,6 @@ const projects: Project[] = [
   {
     title: "Chat control encrypter/decrypter",
     desc: "Made because of European Union, big sis is always watching.",
-    tags: ["Tool", "Freedom", "Python"],
     tone: "oxide",
     href: "https://github.com/muddpunch/chatcontrol-encrypter-decrypter",
     preview: chatcontrolPreview,
@@ -42,7 +40,6 @@ const projects: Project[] = [
   {
     title: "HalfSword Enhancer",
     desc: "Just a normal injector for modifying Half Sword game. Used for fun!",
-    tags: ["Injector", "Half Sword", "C#"],
     tone: "signal",
     href: "https://github.com/muddpunch/Half-Sword-Enhancer",
     preview: halfSwordPreview,
@@ -106,7 +103,7 @@ function App() {
             </a>
           </motion.div>
           <motion.div className="project-grid" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
-            {projects.map((project, index) => <ProjectCard project={project} index={index} key={project.title} />)}
+            {projects.map((project) => <ProjectCard project={project} key={project.title} />)}
           </motion.div>
         </section>
 
@@ -174,19 +171,15 @@ function CursorLight() {
     </motion.div>
   );
 }
-function ProjectCard({ project, index }: { project: Project; index: number }) {
+function ProjectCard({ project }: { project: Project }) {
   return (
     <motion.a className={`project ${project.tone}`} href={project.href} target="_blank" rel="noopener noreferrer" variants={fadeUp} whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
       <div className="project-meta">
-        <span>0{index + 1}</span>
         <span>Open repository ↗</span>
       </div>
       <div className="project-copy">
         <h3>{project.title}</h3>
         <p>{project.desc}</p>
-      </div>
-      <div className="tags">
-        {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
       </div>
     </motion.a>
   );
