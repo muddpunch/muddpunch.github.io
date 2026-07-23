@@ -313,7 +313,7 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
   --accent: var(--ink);
   position: relative;
   display: flex;
-  min-height: 20rem;
+  min-height: 17rem;
   flex-direction: column;
   overflow: hidden;
   padding: 1.4rem;
@@ -364,15 +364,16 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
   position: relative;
   display: grid;
   gap: 1rem;
-  margin: clamp(2.8rem, 6vw, 5rem) 0 2rem;
+  margin: 2.25rem 0 1.35rem;
 }
 
 .project h3 {
-  max-width: 17ch;
+  max-width: 100%;
   margin: 0;
   font-family: Georgia, Cambria, Times New Roman, serif;
-  font-size: clamp(2rem, 3.2vw, 3.45rem);
+  font-size: clamp(1.9rem, 2.55vw, 2.7rem);
   line-height: .98;
+  overflow-wrap: anywhere;
 }
 
 .project p { max-width: 43ch; margin: 0; }
@@ -403,8 +404,6 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
   max-width: 13ch;
   font-size: clamp(2.7rem, 5.2vw, 5.6rem);
 }
-
-.preview-section { border-top: 1px solid var(--line); }
 
 .preview-lead {
   max-width: 29rem;
@@ -476,5 +475,5 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
   .hero, .split, .project-grid, .preview-grid { grid-template-columns: 1fr; }
   .hero { min-height: auto; }
   .projects-heading { align-items: flex-start; flex-direction: column; gap: 1rem; }
-  .project { min-height: 18rem; }
+  .project { min-height: 16rem; }
 }
