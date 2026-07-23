@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import avatar from "../assets/mug-avatar.png";
 import htmlIcon from "../assets/tech/html.png";
 import cssIcon from "../assets/tech/css.png";
@@ -63,6 +63,7 @@ const stagger = {
 function App() {
   return (
     <>
+      <AmbientBackground />
       <CursorLight />
       <section id="top" className="discord-landing" aria-label="Discord profile preview">
         <motion.article className="discord-card" initial={{ opacity: 0, y: 42, scale: 0.96 }} animate={{ opacity: 1, y: 0, scale: 1 }} transition={{ duration: 0.75, ease }}>
@@ -98,15 +99,6 @@ function App() {
           </div>
         </motion.section>
 
-        <motion.section className="stats" variants={stagger} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }} aria-label="Quick facts">
-          {[ ["3+", "years learning by building real things"], ["20+", "websites, tools, backends"], ["Windows?", "trash"] ].map(([value, label]) => (
-            <motion.article variants={fadeUp} key={value}>
-              <strong>{value}</strong>
-              <span>{label}</span>
-            </motion.article>
-          ))}
-        </motion.section>
-
         <section id="work" className="section" aria-labelledby="work-title">
           <motion.div className="section-head" variants={fadeUp} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
             <h2 id="work-title">My favourite projects!</h2>
@@ -120,10 +112,7 @@ function App() {
           <motion.div variants={fadeUp}>
             <h1 id="about-title">I like simple systems that survive real usage.</h1>
           </motion.div>
-          <motion.div className="about-copy" variants={fadeUp}>
-            <p>
-              My work is not one narrow lane. I build pages, backend flows, desktop-style utilities, and game-adjacent tooling. I like messy problems where logs, APIs, UI states, and user experience all have to line up before something feels finished.
-            </p>
+          <motion.div variants={fadeUp}>
             <div className="skills">
               {skills.map(([title, desc]) => <InfoCard title={title} desc={desc} className="skill" key={title} />)}
             </div>
@@ -140,11 +129,19 @@ function App() {
   );
 }
 
+function AmbientBackground() {
+  return (
+    <div className="ambient-bg" aria-hidden="true">
+      <span className="ambient-blob ambient-blob-one" />
+      <span className="ambient-blob ambient-blob-two" />
+      <span className="ambient-blob ambient-blob-three" />
+    </div>
+  );
+}
+
 function CursorLight() {
   const mx = useMotionValue(-240);
   const my = useMotionValue(-240);
-  const x = useSpring(mx, { stiffness: 420, damping: 34, mass: 0.22 });
-  const y = useSpring(my, { stiffness: 420, damping: 34, mass: 0.22 });
 
   useEffect(() => {
     const move = (event: PointerEvent) => {
@@ -168,7 +165,7 @@ function CursorLight() {
 
   return (
     <motion.div className="cursor-light" aria-hidden="true">
-      <motion.div className="cursor-light-dot" style={{ x, y }} />
+      <motion.div className="cursor-light-dot" style={{ x: mx, y: my }} />
     </motion.div>
   );
 }
