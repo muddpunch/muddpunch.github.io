@@ -116,10 +116,9 @@ function App() {
             <p className="preview-lead">A closer look at the tools, interfaces, and experiments behind the code.</p>
           </motion.div>
           <motion.div className="preview-grid" variants={stagger}>
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <motion.a className="preview-card" href={project.href} target="_blank" rel="noopener noreferrer" variants={fadeUp} key={project.title}>
                 <img src={project.preview} alt={`${project.title} project preview`} loading="lazy" />
-                <span className="preview-caption"><b>0{index + 1}</b>{project.title}<i>↗</i></span>
               </motion.a>
             ))}
           </motion.div>
