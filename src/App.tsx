@@ -7,8 +7,8 @@ import jsIcon from "../assets/tech/javascript.png";
 import goIcon from "../assets/tech/golang.png";
 import csharpIcon from "../assets/tech/csharp.png";
 import pythonIcon from "../assets/tech/python.png";
-import chatcontrolPreview from "../assets/projects/chatcontrol-preview.svg";
-import halfSwordPreview from "../assets/projects/half-sword-preview.svg";
+import chatcontrolPreview from "../assets/projects/chatcontrol-preview.png";
+import halfSwordPreview from "../assets/projects/half-sword-preview.png";
 
 type Project = {
   title: string;

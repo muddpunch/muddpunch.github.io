@@ -420,7 +420,7 @@ h2 { max-width: min(100%, 14ch); font-size: clamp(2.2rem, 5vw, 5.2rem); }
 .preview-card {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 3 / 2;
   border: 1px solid var(--line);
   background: var(--panel);
   box-shadow: 0 22px 64px rgb(0 0 0 / 24%);
