@@ -80,7 +80,7 @@ function App() {
             </motion.p>
           </motion.div>
         </motion.article>
-        <motion.span className="discord-scroll-label" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.85, ease }}>scroll</motion.span>
+        <motion.span className="discord-scroll-label" initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, delay: 0.85, ease }}>|</motion.span>
       </section>
 
       <main id="main">
@@ -124,7 +124,7 @@ function App() {
       </main>
 
       <footer className="footer">
-        <span>mudd</span>
+        <span>mudd (The photos are ai generated)</span>
         <span>Personal portfolio, 2026</span>
       </footer>
     </>
