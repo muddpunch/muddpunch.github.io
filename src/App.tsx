@@ -5,409 +5,374 @@ import chatcontrolPreview from "../assets/projects/chatcontrol-preview.png";
 import halfSwordPreview from "../assets/projects/half-sword-preview.png";
 
 type Project = {
-  index: string;
+  id: string;
   title: string;
   description: string;
   tags: string[];
   href: string;
   image: string;
-  accent: "ember" | "gold";
 };
 
-const ease = [0.16, 1, 0.3, 1] as const;
 const github = "https://github.com/muddpunch";
+const ease = [0.16, 1, 0.3, 1] as const;
 
 const projects: Project[] = [
   {
-    index: "01",
+    id: "01",
     title: "Anti Chat Control",
     description:
-      "A privacy-first message encryption tool built as a direct response to invasive online surveillance.",
+      "A privacy-first encryption tool created as a direct response to invasive online surveillance.",
     tags: ["JavaScript", "Cryptography", "Privacy"],
     href: `${github}/chatcontrol-encrypter-decrypter`,
     image: chatcontrolPreview,
-    accent: "ember",
   },
   {
-    index: "02",
+    id: "02",
     title: "Half-Sword Enhancer",
     description:
-      "A lightweight Windows utility that automates mod installation, backups, and game discovery.",
+      "A lightweight Windows utility for automatic mod installation, backups, and game discovery.",
     tags: ["C#", ".NET", "Windows"],
     href: `${github}/Half-Sword-Enhancer`,
     image: halfSwordPreview,
-    accent: "gold",
   },
 ];
 
-const stack = [
-  { name: "TypeScript", code: "TS" },
-  { name: "React", code: "RX" },
-  { name: "Golang", code: "GO" },
-  { name: "Python", code: "PY" },
-  { name: "C Sharp", code: "C#" },
-  { name: "Networking", code: "NW" },
-];
+const stack = ["TypeScript", "React", "Golang", "Python", "C#", "Networking"];
 
-const reveal = {
-  hidden: { opacity: 0, y: 28 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease } },
+const rise = {
+  hidden: { opacity: 0, y: 34 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease } },
 };
 
-const stagger = {
+const sequence = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.08 } },
+  visible: { transition: { staggerChildren: 0.07, delayChildren: 0.06 } },
 };
 
 function App() {
   const reducedMotion = useReducedMotion();
 
   return (
-    <div className="site-shell">
-      <Background />
-      {!reducedMotion && <CursorGlow />}
-      <Header />
+    <div className="app">
+      <Atmosphere />
+      {!reducedMotion && <CursorAura />}
+      <Navigation />
 
       <main>
-        <section className="hero section-pad" id="top" aria-labelledby="hero-title">
+        <section className="hero" id="top" aria-labelledby="hero-title">
+          <div className="hero-blueprint" aria-hidden="true">
+            <span />
+            <span />
+            <span />
+          </div>
+
+          <motion.div className="hero-meta" variants={sequence} initial="hidden" animate="visible">
+            <motion.span variants={rise}>Independent developer</motion.span>
+            <motion.span variants={rise}>Poland / 2026</motion.span>
+            <motion.span className="availability" variants={rise}>
+              <i /> Available for projects
+            </motion.span>
+          </motion.div>
+
+          <motion.div className="hero-title" variants={sequence} initial="hidden" animate="visible">
+            <motion.span variants={rise}>I build</motion.span>
+            <motion.span className="title-cobalt" variants={rise}>things that</motion.span>
+            <motion.span variants={rise}>have a purpose.</motion.span>
+          </motion.div>
+
           <motion.div
-            className="hero-copy"
-            variants={stagger}
+            className="identity-card"
+            initial={{ opacity: 0, scale: 0.9, rotate: 5 }}
+            animate={{ opacity: 1, scale: 1, rotate: 0 }}
+            transition={{ duration: 0.75, delay: 0.34, ease }}
+          >
+            <div className="identity-photo">
+              <img src={avatar} alt="mudd holding a large mug" />
+            </div>
+            <div className="identity-caption">
+              <strong>mudd</strong>
+              <span>@23m.ev</span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="hero-bottom"
+            variants={sequence}
             initial="hidden"
             animate="visible"
           >
-            <motion.div className="eyebrow" variants={reveal}>
-              <span className="status-dot" />
-              Available for interesting projects
-            </motion.div>
-            <motion.h1 id="hero-title" variants={reveal}>
-              I build useful things
-              <span> for the web and beyond.</span>
-            </motion.h1>
-            <motion.p className="hero-intro" variants={reveal}>
-              Backend-minded developer from Poland, turning curiosity into
-              practical software, secure tools, and sharp digital experiences.
+            <motion.p variants={rise}>
+              Backend-minded developer building secure tools, useful software,
+              and sharp web experiences.
             </motion.p>
-            <motion.div className="hero-actions" variants={reveal}>
-              <MagneticLink className="button button-primary" href="#work">
-                Explore my work
-                <ArrowIcon />
-              </MagneticLink>
-              <MagneticLink
-                className="button button-quiet"
-                href={github}
-                external
-              >
-                GitHub
-                <ExternalIcon />
-              </MagneticLink>
+            <motion.div className="hero-actions" variants={rise}>
+              <a className="action action-primary" href="#work">
+                See selected work <Arrow />
+              </a>
+              <a className="action action-ghost" href={github} target="_blank" rel="noreferrer">
+                GitHub <External />
+              </a>
             </motion.div>
           </motion.div>
-
-          <motion.aside
-            className="profile-card"
-            initial={{ opacity: 0, x: 36, rotate: 1.5 }}
-            animate={{ opacity: 1, x: 0, rotate: 0 }}
-            transition={{ duration: 0.8, delay: 0.18, ease }}
-            aria-label="About mudd"
-          >
-            <div className="profile-visual">
-              <img src={avatar} alt="mudd holding a large mug" />
-              <span className="profile-label">Based in Poland</span>
-            </div>
-            <div className="profile-info">
-              <div>
-                <p className="profile-name">mudd</p>
-                <p className="profile-handle">@23m.ev</p>
-              </div>
-              <span className="profile-role">Backend / Security / Web</span>
-            </div>
-          </motion.aside>
-
-          <motion.a
-            className="scroll-cue"
-            href="#about"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.5 }}
-          >
-            <span>Scroll to discover</span>
-            <i />
-          </motion.a>
         </section>
 
-        <section className="about section-pad" id="about" aria-labelledby="about-title">
-          <SectionLabel index="01" text="About" />
+        <Ticker />
+
+        <section className="about page-section" id="about" aria-labelledby="about-title">
+          <SectionHeading number="01" label="About / profile" />
           <motion.div
-            className="about-grid"
-            variants={stagger}
+            className="about-layout"
+            variants={sequence}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.25 }}
           >
-            <motion.h2 id="about-title" variants={reveal}>
-              Code is the medium.
-              <br />
-              <em>Solving is the point.</em>
-            </motion.h2>
-            <motion.div className="about-copy" variants={reveal}>
+            <motion.div className="about-statement" variants={rise}>
+              <p>Not a code factory.</p>
+              <h2 id="about-title">
+                I like finding out <em>how things work</em> — and where they break.
+              </h2>
+            </motion.div>
+
+            <motion.div className="about-copy panel" variants={rise}>
+              <span className="panel-index">A / 01</span>
               <p>
-                I’m a developer and networking student from a small Polish
-                village. I enjoy understanding how systems work, where they
-                break, and how to make them more useful.
+                I am a developer and networking student from a small village in
+                Poland. Programming started as a hobby and turned into my way of
+                solving real problems.
               </p>
               <p>
                 My work moves between backend development, security testing,
-                automation, and frontend experiments. Most projects start with
-                a real problem—or simply an irresistible question.
+                automation, and interface design.
               </p>
+            </motion.div>
+
+            <motion.div className="focus-panel panel" variants={rise}>
+              <span className="panel-index">CURRENT FOCUS</span>
+              <div className="terminal-row">
+                <i />
+                <span>building_web_experiences</span>
+              </div>
+              <div className="focus-list">
+                <span>01 / Utility</span>
+                <span>02 / Security</span>
+                <span>03 / Clarity</span>
+              </div>
             </motion.div>
           </motion.div>
         </section>
 
-        <section className="work section-pad" id="work" aria-labelledby="work-title">
-          <SectionLabel index="02" text="Selected work" />
+        <section className="work page-section" id="work" aria-labelledby="work-title">
+          <SectionHeading number="02" label="Selected work" />
           <motion.div
-            className="work-heading"
-            variants={stagger}
+            className="work-intro"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: true, amount: 0.5 }}
+            variants={sequence}
           >
-            <motion.h2 id="work-title" variants={reveal}>
-              Projects with a reason to exist.
-            </motion.h2>
-            <motion.a
-              variants={reveal}
-              href={github}
-              target="_blank"
-              rel="noreferrer"
-              className="text-link"
-            >
-              All repositories <ExternalIcon />
-            </motion.a>
+            <motion.h2 id="work-title" variants={rise}>Built from curiosity.</motion.h2>
+            <motion.p variants={rise}>
+              Personal tools and experiments designed around a clear problem.
+            </motion.p>
           </motion.div>
 
-          <div className="project-list">
-            {projects.map((project) => (
-              <ProjectCard project={project} key={project.title} />
+          <div className="projects">
+            {projects.map((project, index) => (
+              <ProjectCard project={project} reverse={index % 2 === 1} key={project.title} />
             ))}
           </div>
+
+          <a className="all-projects" href={github} target="_blank" rel="noreferrer">
+            <span>Explore all repositories</span>
+            <External />
+          </a>
         </section>
 
-        <section className="stack-section section-pad" id="stack" aria-labelledby="stack-title">
-          <SectionLabel index="03" text="Toolkit" />
-          <motion.div
-            className="stack-layout"
-            variants={stagger}
+        <section className="toolkit page-section" id="toolkit" aria-labelledby="toolkit-title">
+          <SectionHeading number="03" label="Toolkit / capabilities" />
+          <div className="toolkit-head">
+            <motion.h2
+              id="toolkit-title"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.65, ease }}
+            >
+              Different tools.
+              <br />
+              <span>One way of thinking.</span>
+            </motion.h2>
+          </div>
+          <motion.ul
+            className="tool-list"
+            variants={sequence}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={{ once: true, amount: 0.2 }}
           >
-            <motion.div variants={reveal}>
-              <h2 id="stack-title">
-                Tools change.
-                <br />
-                <em>Fundamentals stay.</em>
-              </h2>
-              <p>
-                A practical stack chosen per problem—not by trend.
-              </p>
-            </motion.div>
-            <motion.ul className="stack-grid" variants={stagger}>
-              {stack.map((item, index) => (
-                <motion.li key={item.name} variants={reveal}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{item.name}</strong>
-                  <i>{item.code}</i>
-                </motion.li>
-              ))}
-            </motion.ul>
-          </motion.div>
+            {stack.map((tool, index) => (
+              <motion.li variants={rise} key={tool}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{tool}</strong>
+                <i>+</i>
+              </motion.li>
+            ))}
+          </motion.ul>
         </section>
 
-        <section className="contact section-pad" id="contact" aria-labelledby="contact-title">
+        <section className="contact page-section" id="contact" aria-labelledby="contact-title">
           <motion.div
-            className="contact-inner"
-            variants={stagger}
+            className="contact-card"
+            variants={sequence}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.35 }}
           >
-            <motion.p className="contact-kicker" variants={reveal}>
-              Have something worth building?
-            </motion.p>
-            <motion.h2 id="contact-title" variants={reveal}>
-              Let’s make it <em>real.</em>
-            </motion.h2>
-            <motion.div variants={reveal}>
-              <MagneticLink
-                className="contact-link"
-                href="https://discord.com/app"
-                external
-              >
-                Find me on Discord — @23m.ev
-                <ArrowIcon />
-              </MagneticLink>
-            </motion.div>
+            <motion.span className="contact-code" variants={rise}>04 / CONTACT</motion.span>
+            <motion.p variants={rise}>Have a useful idea?</motion.p>
+            <motion.h2 id="contact-title" variants={rise}>Let us build it.</motion.h2>
+            <motion.a href="https://discord.com/app" target="_blank" rel="noreferrer" variants={rise}>
+              Find me on Discord <span>@23m.ev</span> <Arrow />
+            </motion.a>
+            <div className="contact-orbit" aria-hidden="true"><i /></div>
           </motion.div>
         </section>
       </main>
 
       <footer>
         <span>© {new Date().getFullYear()} mudd</span>
-        <span>Built with intent, caffeine, and curiosity.</span>
-        <a href="#top">Back to top ↑</a>
+        <span>Built in Poland</span>
+        <a href="#top">Back to top <Arrow /></a>
       </footer>
     </div>
   );
 }
 
-function Header() {
+function Navigation() {
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const close = () => setOpen(false);
-    window.addEventListener("hashchange", close);
-    return () => window.removeEventListener("hashchange", close);
-  }, []);
-
   return (
-    <header className="site-header">
-      <a className="brand" href="#top" aria-label="mudd — home">
-        m<span>u</span>dd
-      </a>
-      <button
-        className="menu-toggle"
-        type="button"
-        aria-label="Toggle navigation"
-        aria-expanded={open}
-        onClick={() => setOpen((value) => !value)}
-      >
-        <span />
-        <span />
-      </button>
-      <nav className={open ? "is-open" : ""} aria-label="Main navigation">
-        <a href="#about" onClick={() => setOpen(false)}>About</a>
-        <a href="#work" onClick={() => setOpen(false)}>Work</a>
-        <a href="#stack" onClick={() => setOpen(false)}>Stack</a>
-        <a className="nav-contact" href="#contact" onClick={() => setOpen(false)}>
-          Let’s talk
+    <>
+      <aside className="side-rail" aria-label="Primary navigation">
+        <a className="rail-logo" href="#top" aria-label="mudd home">M/</a>
+        <nav>
+          <a href="#about"><span>01</span>About</a>
+          <a href="#work"><span>02</span>Work</a>
+          <a href="#toolkit"><span>03</span>Toolkit</a>
+          <a href="#contact"><span>04</span>Contact</a>
+        </nav>
+        <a className="rail-github" href={github} target="_blank" rel="noreferrer" aria-label="GitHub">
+          GH
         </a>
-      </nav>
-    </header>
+      </aside>
+
+      <header className="mobile-header">
+        <a className="rail-logo" href="#top">M/</a>
+        <button
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+          onClick={() => setOpen((value) => !value)}
+        >
+          <span />
+          <span />
+        </button>
+        <nav className={open ? "open" : ""}>
+          {[
+            ["About", "#about"],
+            ["Work", "#work"],
+            ["Toolkit", "#toolkit"],
+            ["Contact", "#contact"],
+          ].map(([label, href]) => (
+            <a href={href} onClick={() => setOpen(false)} key={label}>{label}</a>
+          ))}
+        </nav>
+      </header>
+    </>
   );
 }
 
-function ProjectCard({ project }: { project: Project }) {
+function ProjectCard({ project, reverse }: { project: Project; reverse: boolean }) {
   return (
     <motion.article
-      className={`project-card project-${project.accent}`}
-      initial={{ opacity: 0, y: 44 }}
+      className={`project ${reverse ? "project-reverse" : ""}`}
+      initial={{ opacity: 0, y: 46 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.75, ease }}
+      transition={{ duration: 0.72, ease }}
     >
       <a href={project.href} target="_blank" rel="noreferrer">
-        <div className="project-image">
-          <img src={project.image} alt={`${project.title} interface preview`} loading="lazy" />
-          <div className="project-open" aria-hidden="true">
-            View project <ExternalIcon />
-          </div>
+        <div className="project-visual">
+          <img src={project.image} alt={`${project.title} project preview`} loading="lazy" />
+          <span className="project-view">Open project <External /></span>
         </div>
-        <div className="project-details">
-          <span className="project-index">{project.index}</span>
-          <div>
-            <h3>{project.title}</h3>
-            <p>{project.description}</p>
-            <ul aria-label="Technologies">
-              {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
-            </ul>
+        <div className="project-info">
+          <div className="project-topline">
+            <span>PROJECT / {project.id}</span>
+            <Arrow />
           </div>
-          <ArrowIcon />
+          <h3>{project.title}</h3>
+          <p>{project.description}</p>
+          <ul aria-label="Technologies used">
+            {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
+          </ul>
         </div>
       </a>
     </motion.article>
   );
 }
 
-function SectionLabel({ index, text }: { index: string; text: string }) {
+function SectionHeading({ number, label }: { number: string; label: string }) {
   return (
-    <div className="section-label">
-      <span>{index}</span>
-      <p>{text}</p>
+    <div className="section-heading">
+      <span>{number}</span>
+      <p>{label}</p>
       <i />
     </div>
   );
 }
 
-function MagneticLink({
-  children,
-  className,
-  href,
-  external = false,
-}: {
-  children: React.ReactNode;
-  className: string;
-  href: string;
-  external?: boolean;
-}) {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 300, damping: 22 });
-  const springY = useSpring(y, { stiffness: 300, damping: 22 });
-
+function Ticker() {
+  const text = "BACKEND / SECURITY / WEB / NETWORKING /";
   return (
-    <motion.a
-      className={className}
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noreferrer" : undefined}
-      style={{ x: springX, y: springY }}
-      onPointerMove={(event) => {
-        const rect = event.currentTarget.getBoundingClientRect();
-        x.set((event.clientX - rect.left - rect.width / 2) * 0.12);
-        y.set((event.clientY - rect.top - rect.height / 2) * 0.16);
-      }}
-      onPointerLeave={() => {
-        x.set(0);
-        y.set(0);
-      }}
-    >
-      {children}
-    </motion.a>
-  );
-}
-
-function Background() {
-  return (
-    <div className="background" aria-hidden="true">
-      <div className="background-grid" />
-      <div className="background-orb" />
-      <div className="noise" />
+    <div className="ticker" aria-label="Backend, security, web, networking">
+      <div>
+        <span>{text}</span><span>{text}</span><span>{text}</span><span>{text}</span>
+      </div>
     </div>
   );
 }
 
-function CursorGlow() {
-  const x = useMotionValue(-300);
-  const y = useMotionValue(-300);
-  const springX = useSpring(x, { stiffness: 110, damping: 25 });
-  const springY = useSpring(y, { stiffness: 110, damping: 25 });
+function Atmosphere() {
+  return (
+    <div className="atmosphere" aria-hidden="true">
+      <div className="grid" />
+      <div className="blue-glow" />
+      <div className="grain" />
+    </div>
+  );
+}
+
+function CursorAura() {
+  const x = useMotionValue(-400);
+  const y = useMotionValue(-400);
+  const smoothX = useSpring(x, { stiffness: 95, damping: 24 });
+  const smoothY = useSpring(y, { stiffness: 95, damping: 24 });
 
   useEffect(() => {
     const move = (event: PointerEvent) => {
-      x.set(event.clientX - 180);
-      y.set(event.clientY - 180);
+      x.set(event.clientX - 210);
+      y.set(event.clientY - 210);
     };
     window.addEventListener("pointermove", move, { passive: true });
     return () => window.removeEventListener("pointermove", move);
   }, [x, y]);
 
-  return <motion.div className="cursor-glow" style={{ x: springX, y: springY }} aria-hidden="true" />;
+  return <motion.div className="cursor-aura" style={{ x: smoothX, y: smoothY }} aria-hidden="true" />;
 }
 
-function ArrowIcon() {
+function Arrow() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M5 12h14M13 6l6 6-6 6" />
@@ -415,7 +380,7 @@ function ArrowIcon() {
   );
 }
 
-function ExternalIcon() {
+function External() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M8 16 16 8M9 8h7v7" />
