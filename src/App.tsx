@@ -116,8 +116,6 @@ function App() {
           </motion.div>
         </section>
 
-        <Ticker />
-
         <section className="about page-section" id="about" aria-labelledby="about-title">
           <SectionHeading number="01" label="About / profile" />
           <motion.div
@@ -329,17 +327,6 @@ function SectionHeading({ number, label }: { number: string; label: string }) {
       <span>{number}</span>
       <p>{label}</p>
       <i />
-    </div>
-  );
-}
-
-function Ticker() {
-  const text = "BACKEND / SECURITY / WEB / NETWORKING /";
-  return (
-    <div className="ticker" aria-label="Backend, security, web, networking">
-      <div>
-        <span>{text}</span><span>{text}</span><span>{text}</span><span>{text}</span>
-      </div>
     </div>
   );
 }
