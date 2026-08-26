@@ -2,27 +2,249 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Portfolio of mudd — a backend-minded developer building practical software, secure tools, and modern web experiences." />
-    <meta name="theme-color" content="#111264" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://muddpunch.github.io/" />
-    <meta property="og:site_name" content="mudd" />
-    <meta property="og:title" content="mudd — Developer & Builder" />
-    <meta property="og:description" content="Practical software, secure tools, and modern web experiences." />
-    <meta property="og:image" content="https://muddpunch.github.io/og-image.png" />
-    <meta property="og:image:width" content="750" />
-    <meta property="og:image:height" content="778" />
-    <meta property="og:image:alt" content="Portfolio preview image" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="mudd — Developer & Builder" />
-    <meta name="twitter:description" content="Practical software, secure tools, and modern web experiences." />
-    <meta name="twitter:image" content="https://muddpunch.github.io/og-image.png" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>mudd — Developer & Builder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Mudd, the 3D engine creator." />
+    <title>mudd >.<</title>
+    <link rel="preconnect" href="https://avatars.githubusercontent.com" />
+    <link rel="stylesheet" href="./first.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <div class="backdrop" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="metadata">
+        <source src="./background.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <main class="card">
+      <div class="profile">
+        <header class="intro">
+          <div class="identity">
+            <img
+              class="avatar"
+              src="https://avatars.githubusercontent.com/u/155151285?s=400&u=21198b08a24336fd1105465f94cfa35f42886e21&v=4"
+              alt="muddpunch on github.com"
+              width="56"
+              height="56"
+              decoding="async"
+              fetchpriority="high"
+            />
+            <div>
+              <h1>Mudd</h1>
+              <p class="role">17 y/o developer &amp; 3D engine creator</p>
+            </div>
+          </div>
+
+          <div class="bio">
+            <p>
+              I'm a backend developer and 3D game producer from Poland. I also
+              started to learn x64 reverse engineering, but i found more
+              interesting how a game engine works.
+            </p>
+            <p>
+              Currently working on
+              <a href="https://github.com/muddpunch/FarCry-ToolKit">DuniaToolKit</a>
+              and
+              <a href="https://itwillbeneveropensourced.com">SableEngine</a>.
+            </p>
+          </div>
+        </header>
+
+        <section
+          class="section knowledge"
+          aria-labelledby="mudd-knowledge-title"
+        >
+          <h2 id="mudd-knowledge-title">Knowledge</h2>
+
+          <div class="knowledge-group">
+            <h3>Languages</h3>
+            <ul class="knowledge-list">
+              <li>Go</li>
+              <li>C++</li>
+              <li>C#</li>
+              <li>Python</li>
+            </ul>
+          </div>
+
+          <div class="knowledge-group">
+            <h3>Tools</h3>
+            <ul class="knowledge-list">
+              <li>IDA Pro</li>
+              <li>JetBrains dotPeek</li>
+              <li>Fiddler Classic</li>
+              <li>MongoDB</li>
+            </ul>
+          </div>
+
+          <div class="knowledge-group">
+            <h3>IDE's</h3>
+            <ul class="knowledge-list">
+              <li>Visual Studio Code</li>
+              <li>Visual Studio</li>
+              <li>PyCharm</li>
+              <li>GoLand</li>
+            </ul>
+          </div>
+        </section>
+
+        <div class="discord-status-slot">
+          <img
+            class="discord-status"
+            src="https://dsc-readme.tsuni.dev/api/user/443101466329088010?bannerColor=644573&amp;theme=nitroDark&amp;primaryColor=8180ff&amp;accentColor=fe80c0&amp;width=512"
+            alt="23m.ev's Discord status"
+            width="512"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <div class="music-player" data-music-player>
+            <audio src="./Lil tecca - NUMBER 2.mp3" preload="metadata"></audio>
+
+            <img class="music-cover" src="./cover.png" alt="" />
+
+            <div class="music-track">
+              <strong class="music-title"></strong>
+              <div class="music-timeline">
+                <span class="music-current">0:00</span>
+                <input
+                  class="music-seek"
+                  type="range"
+                  min="0"
+                  max="0"
+                  value="0"
+                  step="0.1"
+                  aria-label="Seek track"
+                  disabled
+                />
+                <span class="music-duration">0:00</span>
+              </div>
+            </div>
+
+            <div class="music-controls">
+              <button class="music-button" type="button" data-action="stop" aria-label="Stop">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect x="7" y="7" width="10" height="10" rx="1" />
+                </svg>
+              </button>
+              <button
+                class="music-button"
+                type="button"
+                data-action="mute"
+                aria-label="Mute"
+                aria-pressed="false"
+              >
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M11 5 6.5 9H3v6h3.5l4.5 4V5Z" />
+                  <path class="sound-waves" d="M15 9.5a4 4 0 0 1 0 5M17.5 7a7.5 7.5 0 0 1 0 10" />
+                  <path class="mute-mark" d="m16 9 5 6m0-6-5 6" />
+                </svg>
+              </button>
+              <button class="music-button music-toggle" type="button" data-action="toggle" aria-label="Play">
+                <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="m8 5 11 7-11 7V5Z" />
+                </svg>
+                <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M7 5h4v14H7zm6 0h4v14h-4z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="projects" aria-labelledby="mudd-projects-title">
+        <h2 id="mudd-projects-title">Projects</h2>
+
+        <div class="projects-list">
+          <a
+            class="project"
+            href="https://github.com/muddpunch/offsets-of-games-finder"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="project-logo"
+              src="OffsetLogo-144.png"
+              alt="Offset Finder logo"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="project-content">
+              <span class="project-header">
+                <strong>Offset finder</strong>
+              </span>
+              <span class="project-summary">
+                Offline offset finder with autoreport &amp; confidence score
+                from 0-100.
+              </span>
+              <span class="project-stack">C#</span>
+            </span>
+          </a>
+
+          <a
+            class="project"
+            href="https://itwillbeneveropensourced.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="project-logo"
+              src="SableLogo-144.png"
+              alt="Sable Engine logo"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="project-content">
+              <span class="project-header">
+                <strong>SableEngine</strong>
+              </span>
+              <span class="project-summary">
+                Sable Engine is an experimental Windows-first game engine built
+                with C++20 and Vulkan 1.3. It focuses on modern rendering,
+                real-time environments, first-person gameplay, and direct
+                low-level control over Vulkan.
+              </span>
+              <span class="project-stack">
+                C++ · CMake · Python · HLSL
+              </span>
+            </span>
+          </a>
+
+          <a
+            class="project"
+            href="https://discord.gg/NfaWxxeKw"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              class="project-logo"
+              src="DevoriaLogo-144.png"
+              alt="Devoria logo"
+              width="48"
+              height="48"
+              decoding="async"
+            />
+            <span class="project-content">
+              <span class="project-header">
+                <strong>Devoria</strong>
+              </span>
+              <span class="project-summary">
+                Shop made by 2 developers: Software, OGFN stuff, Cheats.
+              </span>
+            </span>
+          </a>
+        </div>
+        <div class="discord">
+          <iframe
+            src="https://discord.com/widget?id=1498761456735354890&amp;theme=dark"
+            title="Discord server"
+            loading="lazy"
+            allowtransparency="true"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+          ></iframe>
+        </div>
+      </section>
+    </main>
+    <script src="./first.js" defer></script>
   </body>
 </html>
