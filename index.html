@@ -1,265 +1,93 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="mudd, the 3D engine creator." />
-    <meta property="og:title" content="mudd" />
-    <meta property="og:description" content="The 3D engine creator" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://muddpunch.github.io/" />
-    <meta property="og:image" content="https://muddpunch.github.io/embed.png?v=2" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="736" />
-    <meta property="og:image:height" content="736" />
-    <meta property="og:image:alt" content="mudd" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="mudd" />
-    <meta name="twitter:description" content="The 3D engine creator" />
-    <meta name="twitter:image" content="https://muddpunch.github.io/embed.png?v=2" />
-    <title>mudd >.<</title>
-    <link rel="preconnect" href="https://avatars.githubusercontent.com" />
-    <link rel="stylesheet" href="./first.css" />
-  </head>
-  <body>
-    <div class="backdrop" aria-hidden="true">
-      <video autoplay muted loop playsinline preload="metadata">
-        <source src="./background.mp4" type="video/mp4" />
-      </video>
-    </div>
-    <main class="card">
-      <div class="profile">
-        <header class="intro">
-          <div class="identity">
-            <img
-              class="avatar"
-              src="https://avatars.githubusercontent.com/u/155151285?s=400&u=21198b08a24336fd1105465f94cfa35f42886e21&v=4"
-              alt="muddpunch on github.com"
-              width="56"
-              height="56"
-              decoding="async"
-              fetchpriority="high"
-            />
-            <div>
-              <h1>mudd</h1>
-              <p class="role">17 y/o developer &amp; 3D engine creator</p>
-            </div>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050505">
+  <meta name="description" content="mudd, dev from Poland. i make tools and a 3D engine.">
+  <meta property="og:title" content="mudd">
+  <meta property="og:description" content="dev from Poland. i make tools and a 3D engine.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://muddpunch.github.io/">
+  <meta property="og:image" content="https://muddpunch.github.io/embed.png?v=2">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://muddpunch.github.io/embed.png?v=2">
+  <title>mudd &gt;.&lt;</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://avatars.githubusercontent.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./first.css?v=5">
+  <script src="./first.js?v=4" defer></script>
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true">
+    <video autoplay loop playsinline preload="metadata">
+      <source src="./background.mp4" type="video/mp4">
+    </video>
+  </div>
 
-          <div class="bio">
-            <p>
-              I'm a backend developer and 3D game producer from Poland. I also
-              started to learn x64 reverse engineering, but i found more
-              interesting how a game engine works.
-            </p>
-            <p>
-              Currently working on
-              <a href="https://github.com/muddpunch/FarCry-ToolKit">DuniaToolKit</a>
-              and
-              <a href="https://itwillbeneveropensourced.com">SableEngine</a>.
-            </p>
-          </div>
-        </header>
+  <main class="stack">
+    <section class="profile-card card" aria-labelledby="profile-name">
+      <button class="sound-toggle" type="button" aria-label="Enable background sound" aria-pressed="false">sound off</button>
 
-        <section
-          class="section knowledge"
-          aria-labelledby="mudd-knowledge-title"
-        >
-          <h2 id="mudd-knowledge-title">Knowledge</h2>
-
-          <div class="knowledge-group">
-            <h3>Languages</h3>
-            <ul class="knowledge-list">
-            </li> 
-            <img src="http://cdn.simpleicons.org/go" alt="Go" width="24">
-            <img src="http://cdn.simpleicons.org/cplusplus" alt="c++" width="24">
-            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="c#" width="24">
-            <img src="http://cdn.simpleicons.org/python" alt="python" width="24">
-            </ul>
-          </div>
-
-          <div class="knowledge-group">
-            <h3>Tools</h3>
-            <ul class="knowledge-list">
-              <img src="https://media.discordapp.net/attachments/1499155780144857258/1554978973237379124/IDAIcon.png?backend=b2&ex=6abeda85&is=6abd8905&hm=7aa0dd05adaeb6b77db5928ebc8f60acf379cda127b82370a6d7ab0716a87296&=&format=webp&quality=lossless" alt="IDA PRO" width="24" height="24">
-              <img src="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/128/dotpeek-icon.png" alt="dotPeek" width="24" height="24">
-              <img src="https://telerik.com/favicon.ico" alt="Fiddler Classic" width="24" height="24">
-              <img src="https://cdn.simpleicons.org/mongodb" alt="MongoDB" width="24" height="24">
-
-            </ul>
-          </div>
-
-          <div class="knowledge-group">
-            <h3>IDE's</h3>
-            <ul class="knowledge-list">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Visual Studio Code" width="24" height="24">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio" width="24" height="24">
-              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" alt="fuck you" width="24" height="24">
-               <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/goland/goland-original.svg" alt="fuck you" width="24" height="24">
-            </ul>
-          </div>
-        </section>
-
-        <div class="discord-status-slot">
-          <img
-            class="discord-status"
-            src="https://dsc-readme.tsuni.dev/api/user/443101466329088010?bannerColor=644573&amp;theme=nitroDark&amp;primaryColor=8180ff&amp;accentColor=fe80c0&amp;width=512"
-            alt="23m.ev's Discord status"
-            width="512"
-            loading="lazy"
-            decoding="async"
-          />
-
-          <div class="music-player" data-music-player>
-            <audio src="./Lil tecca - NUMBER 2.mp3" preload="metadata"></audio>
-
-            <img class="music-cover" src="./cover.png" alt="" />
-
-            <div class="music-track">
-              <strong class="music-title"></strong>
-              <div class="music-timeline">
-                <span class="music-current">0:00</span>
-                <input
-                  class="music-seek"
-                  type="range"
-                  min="0"
-                  max="0"
-                  value="0"
-                  step="0.1"
-                  aria-label="Seek track"
-                  disabled
-                />
-                <span class="music-duration">0:00</span>
-              </div>
-            </div>
-
-            <div class="music-controls">
-              <button class="music-button" type="button" data-action="stop" aria-label="Stop">
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <rect x="7" y="7" width="10" height="10" rx="1" />
-                </svg>
-              </button>
-              <button
-                class="music-button"
-                type="button"
-                data-action="mute"
-                aria-label="Mute"
-                aria-pressed="false"
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="M11 5 6.5 9H3v6h3.5l4.5 4V5Z" />
-                  <path class="sound-waves" d="M15 9.5a4 4 0 0 1 0 5M17.5 7a7.5 7.5 0 0 1 0 10" />
-                  <path class="mute-mark" d="m16 9 5 6m0-6-5 6" />
-                </svg>
-              </button>
-              <button class="music-button music-toggle" type="button" data-action="toggle" aria-label="Play">
-                <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="m8 5 11 7-11 7V5Z" />
-                </svg>
-                <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                  <path d="M7 5h4v14H7zm6 0h4v14h-4z" />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
+      <div class="avatar-wrap">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/155151285?s=400&amp;u=21198b08a24336fd1105465f94cfa35f42886e21&amp;v=4" alt="mudd profile picture" width="78" height="78">
+        <span class="status-dot" aria-hidden="true"></span>
       </div>
+      <h1 id="profile-name">mudd</h1>
 
-      <section class="projects" aria-labelledby="mudd-projects-title">
-        <h2 id="mudd-projects-title">Projects</h2>
+      <ul class="skill-icons" aria-label="Languages and tools">
+        <!-- languages -->
+        <li><img src="https://cdn.simpleicons.org/go" alt="Go" width="25" height="25"></li>
+        <li><img src="https://cdn.simpleicons.org/cplusplus" alt="C++" width="25" height="25"></li>
+        <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#" width="25" height="25"></li>
+        <li><img src="https://cdn.simpleicons.org/python" alt="Python" width="25" height="25"></li>
+        <!-- tools -->
+        <li><img src="https://1926493584-files.gitbook.io/~/files/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FD7fgl4EL0WWJ18ZQcIxE%2Fuploads%2Fgit-blob-3d917705a9110478df98482036429c5101968c37%2Ficon_pro.png?alt=media" alt="IDA Pro" width="25" height="25"></li>
+        <li><img src="https://icons.iconarchive.com/icons/papirus-team/papirus-apps/128/dotpeek-icon.png" alt="dotPeek" width="25" height="25"></li>
+        <li><img src="https://telerik.com/favicon.ico" alt="Fiddler Classic" width="25" height="25"></li>
+        <li><img src="https://cdn.simpleicons.org/mongodb" alt="MongoDB" width="25" height="25"></li>
+        <!-- ides -->
+        <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="Visual Studio Code" width="25" height="25"></li>
+        <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio" width="25" height="25"></li>
+        <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" alt="PyCharm" width="25" height="25"></li>
+        <li><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/goland/goland-original.svg" alt="GoLand" width="25" height="25"></li>
+      </ul>
 
-        <div class="projects-list">
-          <a
-            class="project"
-            href="https://github.com/muddpunch/offsets-of-games-finder"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              class="project-logo"
-              src="OffsetLogo-144.png"
-              alt="Offset Finder logo"
-              width="48"
-              height="48"
-              decoding="async"
-            />
-            <span class="project-content">
-              <span class="project-header">
-                <strong>Offset finder</strong>
-              </span>
-              <span class="project-summary">
-                Offline offset finder with autoreport &amp; confidence score
-                from 0-100.
-              </span>
-              <span class="project-stack">C#</span>
-            </span>
-          </a>
+      <div class="profile-actions">
+        <a class="action" data-github-link href="https://github.com/muddpunch" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.simpleicons.org/github/aaaaaa" alt="" width="16" height="16"> GitHub
+        </a>
+        <a class="action" href="https://paypal.me/muddpunch" target="_blank" rel="noopener noreferrer">
+          <img src="https://cdn.simpleicons.org/paypal/aaaaaa" alt="" width="16" height="16"> PayPal
+        </a>
+      </div>
+      <p class="profile-foot">creds to scoob.me</p>
+    </section>
 
-          <a
-            class="project"
-            href="https://itwillbeneveropensourced.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              class="project-logo"
-              src="SableLogo-144.png"
-              alt="Sable Engine logo"
-              width="48"
-              height="48"
-              decoding="async"
-            />
-            <span class="project-content">
-              <span class="project-header">
-                <strong>SableEngine</strong>
-              </span>
-              <span class="project-summary">
-                Sable Engine is an experimental Windows-first game engine built
-                with C++20 and Vulkan 1.3. It focuses on modern rendering,
-                real-time environments, first-person gameplay, and direct
-                low-level control over Vulkan.
-              </span>
-              <span class="project-stack">
-                C++ · CMake · Python · HLSL
-              </span>
-            </span>
-          </a>
+    <section class="discord-card card" aria-label="Discord profile">
+      <img class="discord-preview" alt="Discord status" width="400" height="54">
+      <a class="discord-link" href="https://discord.com/users/443101466329088010" target="_blank" rel="noopener noreferrer">
+        <img src="https://cdn.simpleicons.org/discord/ffffff" alt="" width="15" height="15"> add me on discord
+      </a>
+    </section>
 
-          <a
-            class="project"
-            href="https://discord.gg/NfaWxxeKw"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              class="project-logo"
-              src="DevoriaLogo-144.png"
-              alt="Devoria logo"
-              width="48"
-              height="48"
-              decoding="async"
-            />
-            <span class="project-content">
-              <span class="project-header">
-                <strong>Devoria</strong>
-              </span>
-              <span class="project-summary">
-                Shop made by 2 developers: Software, OGFN stuff, Cheats.
-              </span>
-            </span>
-          </a>
-        </div>
-        <div class="discord">
-          <iframe
-            src="https://discord.com/widget?id=1498761456735354890&amp;theme=dark"
-            title="Discord server"
-            loading="lazy"
-            allowtransparency="true"
-            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-          ></iframe>
-        </div>
-      </section>
-    </main>
-    <script src="./first.js" defer></script>
-  </body>
+    <section class="github-card card" aria-labelledby="github-title">
+      <div class="github-heading">
+        <img src="https://avatars.githubusercontent.com/u/155151285?s=80" alt="" width="25" height="25">
+        <h2 id="github-title">GitHub contributions</h2>
+      </div>
+      <img class="github-fallback" src="https://ghchart.rshah.org/d51cf0/muddpunch" alt="GitHub contribution chart" width="380" height="60">
+      <div class="github-live" hidden>
+        <div class="months" aria-hidden="true"></div>
+        <div class="contribution-grid" role="img" aria-label="GitHub contributions"></div>
+      </div>
+      <div class="github-footer">
+        <div class="github-stats"></div>
+        <div class="legend" aria-hidden="true"><span>less</span><i></i><i></i><i></i><i></i><i></i><span>more</span></div>
+      </div>
+    </section>
+  </main>
+</body>
 </html>

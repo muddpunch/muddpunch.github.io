@@ -1,89 +1,114 @@
-const player = document.querySelector("[data-music-player]");
+const ghLink = document.querySelector("[data-github-link]");
+const dcLink = document.querySelector(".discord-link");
+const dcPreview = document.querySelector(".discord-preview");
+const grid = document.querySelector(".contribution-grid");
+const monthRow = document.querySelector(".months");
+const stats = document.querySelector(".github-stats");
+const chartImg = document.querySelector(".github-fallback");
+const live = document.querySelector(".github-live");
+const video = document.querySelector(".backdrop video");
+const soundBtn = document.querySelector(".sound-toggle");
 
-if (player) {
-  const audio = player.querySelector("audio");
-  const title = player.querySelector(".music-title");
-  const current = player.querySelector(".music-current");
-  const duration = player.querySelector(".music-duration");
-  const seek = player.querySelector(".music-seek");
-  const toggle = player.querySelector('[data-action="toggle"]');
-  const stop = player.querySelector('[data-action="stop"]');
-  const mute = player.querySelector('[data-action="mute"]');
 
-  const file = decodeURIComponent(audio.getAttribute("src").split("/").pop());
-  title.textContent = file.replace(/\.mp3$/i, "");
+video.volume = 0.65;
 
-  const formatTime = (seconds) => {
-    if (!Number.isFinite(seconds)) return "0:00";
-    const minutes = Math.floor(seconds / 60);
-    return `${minutes}:${Math.floor(seconds % 60).toString().padStart(2, "0")}`;
-  };
-
-  const getDuration = () => {
-    if (Number.isFinite(audio.duration) && audio.duration > 0) return audio.duration;
-    return audio.seekable.length ? audio.seekable.end(audio.seekable.length - 1) : 0;
-  };
-
-  const syncProgress = () => {
-    const value = audio.currentTime || 0;
-    const max = getDuration();
-    seek.max = max;
-    seek.disabled = max === 0;
-    seek.value = value;
-    seek.style.setProperty("--music-progress", `${max ? (value / max) * 100 : 0}%`);
-    seek.setAttribute("aria-valuetext", `${formatTime(value)} of ${formatTime(max)}`);
-    current.textContent = formatTime(value);
-    duration.textContent = formatTime(max);
-  };
-
-  const syncPlayback = () => {
-    const playing = !audio.paused && !audio.ended;
-    player.dataset.playing = String(playing);
-    toggle.setAttribute("aria-label", playing ? "Pause" : "Play");
-  };
-
-  audio.addEventListener("loadedmetadata", syncProgress);
-  audio.addEventListener("durationchange", syncProgress);
-  audio.addEventListener("canplay", syncProgress);
-  audio.addEventListener("timeupdate", syncProgress);
-  audio.addEventListener("play", syncPlayback);
-  audio.addEventListener("pause", syncPlayback);
-  audio.addEventListener("ended", () => {
-    audio.currentTime = 0;
-    syncPlayback();
-    syncProgress();
-  });
-  audio.addEventListener("volumechange", () => {
-    mute.setAttribute("aria-pressed", String(audio.muted));
-    mute.setAttribute("aria-label", audio.muted ? "Unmute" : "Mute");
-  });
-
-  toggle.addEventListener("click", async () => {
-    if (audio.paused) {
-      try {
-        await audio.play();
-      } catch {
-        syncPlayback();
-      }
-    } else {
-      audio.pause();
-    }
-  });
-
-  stop.addEventListener("click", () => {
-    audio.pause();
-    audio.currentTime = 0;
-    syncProgress();
-  });
-
-  mute.addEventListener("click", () => {
-    audio.muted = !audio.muted;
-  });
-
-  seek.addEventListener("input", () => {
-    audio.currentTime = Number(seek.value);
-    syncProgress();
-  });
-
-  syncPlayback();
+function syncSoundBtn() {
+  const on = !video.muted && !video.paused;
+  soundBtn.textContent = on ? "sound on" : "sound off";
+  soundBtn.setAttribute("aria-label", on ? "Mute background sound" : "Enable background sound");
+  soundBtn.setAttribute("aria-pressed", String(on));
 }
+
+video.play().catch(() => {
+  video.muted = true;
+  video.play().catch(() => {});
+});
+
+soundBtn.addEventListener("click", () => {
+  if (!video.muted) {
+    video.muted = true;
+    return;
+  }
+  video.muted = false;
+  video.play().catch(() => {
+    video.muted = true;
+  });
+});
+
+["play", "pause", "volumechange"].forEach(e => video.addEventListener(e, syncSoundBtn));
+syncSoundBtn();
+
+
+const user = new URL(ghLink.href).pathname.split("/").filter(Boolean)[0];
+const dcId = new URL(dcLink.href).pathname.split("/").filter(Boolean).pop();
+
+chartImg.src = "https://ghchart.rshah.org/d51cf0/" + encodeURIComponent(user);
+chartImg.addEventListener("error", () => {
+  if (!live.hidden) return;
+  chartImg.hidden = true;
+  live.hidden = false;
+  grid.classList.add("is-error");
+  grid.textContent = "can't load github activity";
+});
+
+if (/^\d{17,20}$/.test(dcId)) {
+  dcPreview.src = "https://dsc-readme.tsuni.dev/api/user/" + dcId + "?layout=compact&width=400";
+}
+
+const handle = document.querySelector(".handle");
+if (handle) handle.textContent = "@" + user;
+document.querySelector("#github-title").textContent = user + "'s GitHub contributions";
+
+async function loadContribs() {
+  try {
+    if (!/^[a-z\d-]+$/i.test(user)) throw new Error("bad username");
+
+    const res = await fetch("https://github-contributions-api.jogruber.de/v4/" + user + "?y=last");
+    if (!res.ok) throw new Error("api error");
+
+    const json = await res.json();
+    const days = json.contributions.slice(-196);
+    if (!days.length) throw new Error("no data");
+
+    grid.replaceChildren();
+    monthRow.replaceChildren();
+
+    days.forEach((d, i) => {
+      const cell = document.createElement("span");
+      cell.className = "level-" + d.level;
+      cell.title = d.date + ": " + d.count + " contributions";
+      grid.append(cell);
+
+      if (i % 7 !== 0) return;
+      const date = new Date(d.date + "T00:00:00");
+      const prev = i ? new Date(days[i - 7].date + "T00:00:00") : null;
+      if (prev && prev.getMonth() === date.getMonth()) return;
+
+      const label = document.createElement("span");
+      label.textContent = date.toLocaleString("en", { month: "short" });
+      label.style.gridColumn = i / 7 + 1;
+      monthRow.append(label);
+    });
+
+    let total = 0, active = 0, run = 0, best = 0;
+    for (const d of days) {
+      total += d.count;
+      if (d.count) {
+        active++;
+        run++;
+        if (run > best) best = run;
+      } else {
+        run = 0;
+      }
+    }
+
+    stats.textContent = total + " contributions, " + active + " active days, best streak " + best;
+    grid.setAttribute("aria-label", total + " contributions in the last 28 weeks");
+    chartImg.hidden = true;
+    live.hidden = false;
+  } catch {
+    stats.textContent = "GitHub activity";
+  }
+}
+
+loadContribs();
